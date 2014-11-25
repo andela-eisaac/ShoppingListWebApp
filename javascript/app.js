@@ -27,7 +27,18 @@ var createListItem = function ( itemString ) {
   var deleteButton = document.createElement( "button" );
 
   //each element needs to be modifying
-  //each element need to be appended 
+  checkBox.type = "checkbox";
+  editInput.type = "text";
+
+  editButton.innerText = "Edit";
+  editButton.className = "edit";
+
+  deleteButton.innerText = "Delete";
+  deleteButton.className = "delete";
+
+  label.innerText = itemString;
+
+  //each element needs to be appended 
   listItem.appendChild(checkBox);
   listItem.appendChild(label);
   listItem.appendChild(editInput);
@@ -42,24 +53,34 @@ var addItem = function () {
   //when the add button is pressed
   console.log("add item...");
   //create new shopping item with the  text from the user entry
-  var listItem = createListItem( "a new item" );
+  var listItem = createListItem( itemInput.value );
   //Append listItem to incompleteListHolder   
   incompleteListHolder.appendChild( listItem );
-  // bindItemEvents(listItem, purchasedListHolder);
+  bindItemEvents(listItem, markAsPurchased);
 }
 
 //Edit Pending 
 var editItem = function () {
   //when the edit button is pressed
   console.log("edit item...");
-    // if the class of the parent is .editMode
-      //switch from .editMode
-      //label text becomes the input's value
-    //else
-      //switch to .editMode
-      //input value becomes the label's text
+  var listItem = this.parentNode;
+  var editInput = listItem.querySelector("input[type=text]");
+  var label = listItem.querySelector("label");
+  var containsClass = listItem.classList.contains("editMode");
+  // if the class of the parent is .editMode
+  if ( containsClass) {
+    //switch from .editMode
 
-    //Toggle .editMode on the parent
+    //label text becomes the input's value
+    label.innerText = editInput.value;
+  } else {
+    //else
+    //switch to .editMode
+    //input value becomes the label's text
+    editInput.value = label.innerText;
+  }
+  //Toggle .editMode on the parent
+  listItem.classList.toggle("editMode");
 }
 
 //Delete an existing shopping item
