@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+  	<header>
+  		<h1>Shopping List Web App</h1>
+  	</header>
+  	<div class="container">
+	  	<div class="add">
+	  		<p>
+	  			<label for="add" id="addLabel">Add Item</label>
+	  			<div class="input">
+		  			<input type="text" id="add" name="add">
+			  		<button id="addButton">Add</button>
+		  		</div>
+	  		</p>
+	  	</div>
+	  	<div class="pending">
+	  		<h2>Pending</h2>
+  			<div class="pendingList">
+  				<ul>
+  					<li>
+			  			<input type="checkbox" name="pending" value="Tomatoes"><label>Tomatoes</label><input type="text">
+				  		<button id="addPending">Add</button>
+				  		<button id="deleteButton">Delete</button>
+			  		</li>
+			  		<li class="editMode">
+			  			<input type="checkbox" name="pending" value="Mayonnaise"><label>Mayonnaise</label><input type="text" value="Mayonnaise">
+				  		<button id="addPending">Add</button>
+				  		<button id="deleteButton">Delete</button>
+			  		</li>
+		  		</ul>
+	  		</div>
+	  	</div>
+  	</div>
+  	<div class="purchased">
+  		<h3>Purchased</h3>
+  		<div class="purchasedList">
+  			<input type="checkbox" id="purchased" name="purchased" value="Purchased"><label for="purchased">Groundnuts</label>
+	  		<button id="addPurchased">Add</button>
+	  		<button id="deletePurchased">Delete</button>
+	  	</div>
+  	</div>
+  </body>
+</html>
