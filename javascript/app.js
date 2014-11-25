@@ -1,22 +1,57 @@
 // problem: user interaction does not provide desired result
 // solution: add interactivity so the user can better manage shopping list
 
+var itemInput = document.getElementById("add"); // new item input from user
+var addButton = document.getElementsByTagName("button")[0]; // first button (add)
+var incompleteListHolder = document.getElementById("incompleteListHolder"); // pending ul
+var purchasedListHolder = document.getElementById("purchasedListHolder"); // purchased ul
+
+// New List Item
+var createListItem = function ( itemString ) {
+  // Create List Item
+  var listItem = document.createElement( "li" );
+
+  //input checkbox
+  var checkBox = document.createElement( "input" );
+
+  //label
+  var label = document.createElement( "label" );
+
+  //input while we edit
+  var editInput = document.createElement( "input" );
+
+  //add button (button.edit)
+  var editButton = document.createElement( "button" );
+
+  //delete button (button.delete)
+  var deleteButton = document.createElement( "button" );
+
+  //each element needs to be modifying
+  //each element need to be appended 
+  listItem.appendChild(checkBox);
+  listItem.appendChild(label);
+  listItem.appendChild(editInput);
+  listItem.appendChild(editButton);
+  listItem.appendChild(deleteButton);
+
+  return listItem;
+}
 
 //Add Item
 var addItem = function () {
   //when the add button is pressed
+  console.log("add item...");
   //create new shopping item with the  text from the user entry
-    //input checkbox
-    //label
-    //input while we edit
-    //add button (button.edit)
-    //delete button (button.delete)
-    //each element needs to be modified and appended  
+  var listItem = createListItem( "a new item" );
+  //Append listItem to incompleteListHolder   
+  incompleteListHolder.appendChild( listItem );
+  // bindItemEvents(listItem, purchasedListHolder);
 }
 
 //Edit Pending 
-var editPending = function () {
+var editItem = function () {
   //when the edit button is pressed
+  console.log("edit item...");
     // if the class of the parent is .editMode
       //switch from .editMode
       //label text becomes the input's value
@@ -30,18 +65,64 @@ var editPending = function () {
 //Delete an existing shopping item
 var deleteItem = function () {
   //when the delete button is pressed
-    //remove the parent list item from the ul
+  console.log("delete item...");
+  //remove the parent list item from the ul
+  var listItem = this.parentNode;
+  var ul = listItem.parentNode;
+  ul.removeChild(listItem);
 }
 
 //Mark a shopping item as purchased
 var markAsPurchased = function () {
   //when the checkbox is checked
-    //append the shopping list item to purchased
+  console.log("item purchased...");
+  //append the shopping list item to purchased
+  var listItem = this.parentNode;
+  purchasedListHolder.appendChild( listItem );
+  bindItemEvents(listItem, markAsPending);
 }
 
 //Mark a shopping item as Pending
 var markAsPending = function () {
   //when the checkbox is unchecked
-    //append the task list item to the pending ul
+  console.log("item not purchased...");
+  //append the task list item to the pending ul
+  var listItem = this.parentNode;
+  incompleteListHolder.appendChild( listItem );
+  bindItemEvents(listItem, markAsPurchased);
+}
+
+
+//set the click handler to the addItem function 
+addButton.onclick = addItem;
+
+
+var bindItemEvents = function (shoppingListItem, checkBoxEventHandler) {
+  console.log("Bind item events...");
+  // select its children
+  var checkBox = shoppingListItem.querySelector("input[type=checkbox]");
+  var editButton = shoppingListItem.querySelector("button.edit");
+  var deleteButton = shoppingListItem.querySelector("button.delete");
+
+  //bind editItem to edit button
+  editButton.onclick = editItem;
+
+  //bind deleteItem to delete button
+  deleteButton.onclick = deleteItem;
+
+  //bind markAsPurchased to checkbox
+  checkBox.onchange = checkBoxEventHandler;
+}
+
+// cycle over incompleteListHolder ul list
+for (var i=0; i < incompleteListHolder.children.length; i++) {
+    //bind events to list item's children (markAsPurchased)
+    bindItemEvents(incompleteListHolder.children[i], markAsPurchased);
+}
+
+// cycle over purchasedListHolder ul list
+for (var i = 0; i < purchasedListHolder.children.length; i++) {
+    //bind events to list item's children (markAsPending)
+    bindItemEvents(purchasedListHolder.children[i], markAsPending);
 }
 
