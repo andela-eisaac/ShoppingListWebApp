@@ -52,11 +52,13 @@ var shoppingController = {
     //when the add button is pressed
     console.log("add item...");
 
+    if (shoppingController.validate() == true) {
     //create new shopping item with the  text from the user entry
     var listItem = shoppingController.createListItem( shoppingController.itemInput.value );
     //Append listItem to incompleteListHolder   
     shoppingController.incompleteListHolder.appendChild( listItem );
     shoppingController.bindItemEvents(listItem, shoppingController.markAsPurchased);
+    } else alert ("Please, add a valid input");
 
     shoppingController.itemInput.value = "";
   },
@@ -140,6 +142,12 @@ var shoppingController = {
 
     //bind markAsPurchased to checkbox
     checkBox.onchange = checkBoxEventHandler;
+  },
+
+  validate: function() {
+    if ( this.itemInput.value.trim() != "" ) {
+      return true;
+    } else return false;
   }
 
 };
