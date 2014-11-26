@@ -91,6 +91,7 @@ var deleteItem = function () {
   var listItem = this.parentNode;
   var ul = listItem.parentNode;
   ul.removeChild(listItem);
+  console.log(this);
 }
 
 //Mark a shopping item as purchased
