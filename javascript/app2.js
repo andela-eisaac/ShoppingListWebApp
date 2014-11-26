@@ -51,19 +51,19 @@ var shoppingController = {
   addItem: function () {
     //when the add button is pressed
     console.log("add item...");
+
     //create new shopping item with the  text from the user entry
     var listItem = shoppingController.createListItem( shoppingController.itemInput.value );
     //Append listItem to incompleteListHolder   
     shoppingController.incompleteListHolder.appendChild( listItem );
     shoppingController.bindItemEvents(listItem, shoppingController.markAsPurchased);
-    console.log(incompleteListHolder);
 
     shoppingController.itemInput.value = "";
   },
 
 
-//Edit 
-editItem: function () {
+  //Edit 
+  editItem: function () {
   //when the edit button is pressed
   console.log("edit item...");
   var listItem = this.parentNode;
@@ -140,7 +140,8 @@ editItem: function () {
 
     //bind markAsPurchased to checkbox
     checkBox.onchange = checkBoxEventHandler;
-  }  
+  }
+
 };
 
 // cycle over incompleteListHolder ul list
