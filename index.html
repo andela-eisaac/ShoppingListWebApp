@@ -2,52 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>Shopping List Web App</title>
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-  	<header>
-  		<h1>Shopping List Web App</h1>
-  	</header>
-  	<div class="container">
-	  	<div class="add">
-	  		<p>
+    <div class="vessel">
+    	<header>
+    		<h1>My Shopping List</h1>
+    	</header>
+    	<div class="container">
+  	  	<div class="add">
 	  			<label for="add" id="addLabel">Add Item</label>
 	  			<div class="input">
 		  			<input type="text" id="add" name="add">
 			  		<button>Add</button>
 		  		</div>
-	  		</p>
-	  	</div>
-	  	<div class="pending">
-	  		<h2>Pending</h2>
-  			<div class="pendingList">
-  				<ul id="incompleteListHolder">
-  					<li>
-			  			<input type="checkbox" name="pending" value="Tomatoes"><label>Tomatoes</label><input type="text">
-				  		<button class="edit">Edit</button>
-				  		<button class="delete">Delete</button>
-			  		</li>
-			  		<li class="editMode">
-			  			<input type="checkbox"><label>Mayonnaise</label><input type="text" value="Mayonnaise">
-				  		<button class="edit">Edit</button>
-				  		<button class="delete">Delete</button>
-			  		</li>
-		  		</ul>
-	  		</div>
-	  	</div>
-  	</div>
-  	<div class="purchased">
-  		<h3>Purchased</h3>
-  		<div class="purchasedList">
-  			<ul id="purchasedListHolder">
-  				<li>
-		  			<input type="checkbox" checked ><label>Groundnuts</label><input type="text">
-			  		<button class="edit">Edit</button>
-			  		<button class="delete">Delete</button>
-		  		</li>
-	  		</ul>
-	  	</div>
-  	</div>
-  	<script type="text/javascript" src="javascript/app2.js"></script>
-  </body>
+  	  	</div>
+  	  	<div class="pending">
+  	  		<h2>Pending</h2>
+    			<div class="pendingList">
+    				<ul id="incompleteListHolder">
+    					<li>
+  			  			<input type="checkbox" name="pending" value="Tomatoes"><label>Tomatoes</label><input type="text">
+  				  		<button class="edit">Edit</button>
+  				  		<button class="delete">Delete</button>
+  			  		</li>
+  			  		<li class="editMode">
+  			  			<input type="checkbox"><label>Mayonnaise</label><input type="text" value="Mayonnaise">
+  				  		<button class="edit">Edit</button>
+  				  		<button class="delete">Delete</button>
+  			  		</li>
+  		  		</ul>
+  	  		</div>
+  	  	</div>
+    	</div>
+    	<div class="purchased">
+    		<h3>Purchased</h3>
+    		<div class="purchasedList">
+    			<ul id="purchasedListHolder">
+    				<li>
+  		  			<input type="checkbox" checked ><label>Groundnuts</label><input type="text">
+  			  		<button class="edit">Edit</button>
+  			  		<button class="delete">Delete</button>
+  		  		</li>
+  	  		</ul>
+  	  	</div>
+    	</div>
+    	<script type="text/javascript" src="javascript/app2.js"></script>
+    </div>
+  </body> 
 </html>
